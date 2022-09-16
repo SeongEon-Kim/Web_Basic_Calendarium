@@ -1,0 +1,159 @@
+
+body{
+    background: #FEF01B;
+    
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+    
+}
+#rapper{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+#login{
+    width: auto;
+    height: auto;
+    text-align: center;
+}
+
+#Calendarium{
+    width: 324px;
+    height: 60px;
+    
+    display: flex;
+    text-align: center;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 27.5px;
+
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 900;
+    font-size: 48px;
+    line-height: 58px;
+
+    color: #005247;
+    
+}
+
+#id_input_box{
+    width: 400px;
+    height: 56px;
+
+    margin: 17.5px;
+    
+    border:none;
+
+    background: #FAF1CB;
+}
+
+#pw_input_box{
+    width: 400px;
+    height: 56px;
+
+    margin: 17.5px;
+
+    border:none;
+
+    background: #FAF1CB;
+}
+
+::placeholder{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #767676;
+}
+
+#login_button{
+    width: 400px;
+    height: 56px;
+
+    margin: 17.5px;
+    margin-top: 27.5px;
+
+    background: #005247;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+
+    border:none;
+
+    color: #FFFFFF;
+}
+
+.notice_font{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    
+    color: #767676;
+}
+
+a {
+    text-decoration: none;
+  }
+  
+#find_id_pw{
+    margin: 17.5px;
+
+    display: flex;
+
+    justify-content: center;
+}
+
+#sign{
+    display: flex;
+    margin: 17.5px;
+    justify-content: center;
+}
+
+
+#find_id_link{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    
+    color: #005247;
+}
+
+#find_pw_link{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    
+    color: #005247;
+}
+
+#signup_link{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    
+    color: #005247;
+}
+
+
+/* 미디어 쿼리 
+피드백 완벽하게 구현 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/

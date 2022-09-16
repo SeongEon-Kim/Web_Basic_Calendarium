@@ -1,0 +1,226 @@
+body{
+    margin: 0;
+    background: #FAF1CB;
+}
+
+/* a태그 아래 줄 없애기 */
+a {
+    text-decoration: none;
+  }
+
+header{
+    height: 70px;
+    background: #FEF01B;
+    
+}
+
+#top_bar{
+    display: flex;
+}
+
+#side_nav_btn{
+    text-align: center;
+    
+    margin: 20px 20px 20px 20px;
+
+    /* 커서의 속성을 바꿈 */
+    cursor:pointer;
+
+    font-size:25px;
+    color:#005247;
+        
+}
+#profile{
+    width: 1300px;
+    text-align: right;
+    color:#005247;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 25px;
+    margin: 20px 20px 20px 20px;
+}
+
+#Calendarium{
+    width: 324px;
+    height: 70px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 900;
+    font-size: 48px;
+
+    color: #005247;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+
+    position: fixed;
+    z-index: 1;
+    top: 70px;
+    
+    background-color:#FEF01B;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 30px;
+  }
+  
+.sidenav #nav_close {
+    /* 위 오 아 왼 */
+    padding: 8px 8px 8px 32px;
+    
+    font-size: 30px;
+    color: #005247;
+    /* 애니메이션 속도 조절 */
+    transition: 0.3s;
+ }
+.department{
+    margin-top: 10px;
+    margin-left: 20px;
+}
+.sidenav .department_box{
+    
+    color: #005247;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 22px;
+}
+
+  /* .sidenav a:hover {
+    color: #f1f1f1;
+  } */
+  
+ .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  /* 미디어쿼리 */
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+ /* 미디어 쿼리 적용
+ 두개의 css를 html 에 임포트 */
+  #team{
+    width: 106px;
+    height: 20px;
+    /* left: 36px; */
+    padding: 2px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 19px;
+    margin-left: 100px;
+/* identical to box height */
+
+    color: #005247;
+}
+
+#calendar_year_month{
+    width: 131px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 27px;
+
+    color: #005247;
+}
+.year_month_change{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 27px;
+
+    color: #005247;
+    
+}
+.year_month_change_btn{
+    background: #FAF1CB;
+    color: #005247;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 22px;
+    border: 0;
+}
+
+#calendar{
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    margin: 20px 60px 20px 60px;
+}
+.calendar_box{
+    height: 40px;
+    display: flex;
+}
+
+#calendar_box_line{
+    /* hr 태그 가운데 정렬 */
+    margin: auto;    
+    width: 95%;
+    text-align: center;
+    border: 2px solid #005247;
+}
+
+
+#day{
+    /* 18일 */
+width: 60px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 800;
+font-size: 28px;
+padding: 6px 0px 6px 0px;;
+
+color: #005247;
+}
+#todo{
+height: 56px;
+}
+#todo_box{
+    display: flex;
+    justify-content: space-between;
+    /* padding: 20px; */
+    margin: 20px 60px 20px 60px;
+    /* justify-content: space-around; */
+}
+#todo_date_content{
+    display: flex;
+
+}
+#todo_content{
+width: 1170px;
+height: 16px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+
+padding: 12px 0px 12px 0px;
+
+color: #767676;
+
+}
+#edit_delete_btn{
+    width: 60px;
+    /* height: 40px; */
+    text-align: center;
+    padding: 12px 0px 12px 0px;
+}
