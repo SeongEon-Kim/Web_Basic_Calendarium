@@ -8,7 +8,7 @@
 </head>
 <body>
     <div id="rapper" >
-        <form id="login">
+        <form id="login" action="signup_check.jsp">
             <a href="index.jsp"id="Calendarium">
                 Calendarium
                 <iconify-icon icon="mdi:palm-tree" style="color: #005247;" width="50" height="50"></iconify-icon>
@@ -30,22 +30,23 @@
             <div><input type="password" id="pw_check_input_box" placeholder="비밀번호를 한번 더입력하세요"></div>
             <div><input name="user_name" type="text" id="name_input_box" placeholder="이름를 입력하세요"></div>
             <select name="user_department" id="department_select_box">
-                <option value="">총괄</option>
-                <option value="개발">개발 부서</option>
-                <option value="교육">교육 부서</option>
-                <option value="마케팅">마케팅 부서</option>
+                <option value="총괄">총괄</option>
+                <option value="개발 부서">개발 부서</option>
+                <option value="교육 부서">교육 부서</option>
+                <option value="마케팅 부서">마케팅 부서</option>
             </select>
+            
             <select name="user_rank" id="rank_select_box">
-                <!-- <option value="">직급</option> -->
                 <option value="관리자">관리자</option>
                 <option value="팀장">팀장</option>
                 <option value="팀원">팀원</option>
             </select>
+            
             <div><input name="user_email" type="text" id="email_input_box" placeholder="이메일을 입력하세요"></div>
             <div><input name="user_phone" type="text" id="phone_input_box" placeholder="휴대폰 번호를 입력하세요(-제외)"></div>
             <div>
-                <input type="submit" value="회원가입" id="login_button" onclick="signup()" formaction="signup_check.jsp">
-                <!-- <button id="login_button" onclick="signup()">회원가입</button> -->
+                <!-- <input type="submit" value="회원가입" id="login_button" onclick="signup()" formaction="signup_check.jsp"> -->
+                <button id="login_button" onclick="signup()">회원가입</button>
             </div>
         
             <div id="find_id_pw">
@@ -109,13 +110,13 @@
         if (!user_id){
             alert('회원가입 실패\n아이디를 입력해주세요.')
             document.getElementById("id_input_box").focus(); //커서가 가도록 함
-            return; // 원상태로 되돌림
+            return ; // 원상태로 되돌림
         }
         // 아이디 중복체크 해야함
         if (!user_pw){
             alert('회원가입 실패\n비밀번호를 입력해주세요.')
             document.getElementById("pw_input_box").focus(); //커서가 가도록 함
-            return; // 원상태로 되돌림
+            return ; // 원상태로 되돌림
         }
         if (!user_pw_check){
             alert('회원가입 실패\n비밀번호를 다시 한번 입력해주세요.')
@@ -144,11 +145,7 @@
             document.getElementById("phone_input_box").focus(); //커서가 가도록 함
             return; // 원상태로 되돌림
         }
-        else{
-            document.getElementById("login").submit();
-            window.open("signup_check.jsp")
-
-        }
+       
     }
 
 </script>

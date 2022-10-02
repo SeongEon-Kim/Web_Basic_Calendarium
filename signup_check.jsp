@@ -58,7 +58,7 @@
     query.setInt(8,1);
 
     // SQL문 전송 및 결과 받기 디비에서 가져오기!
-    //ResultSet result = query.executeQuery();
+    // ResultSet result = query.executeQuery();
 
     // 값 업데이트 삽입 삭제
     // 데이터베이스에 값 삽입, 수정, 삭제

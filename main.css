@@ -84,6 +84,18 @@ header{
     margin-top: 10px;
     margin-left: 20px;
 }
+#develope_department{
+    margin-top: 10px;
+    margin-left: 20px;
+}
+#education_department{
+    margin-top: 10px;
+    margin-left: 20px;
+}
+#marketing_department{
+    margin-top: 10px;
+    margin-left: 20px;
+}
 .sidenav .department_box{
     
     color: #005247;
@@ -93,7 +105,33 @@ header{
     font-weight: 800;
     font-size: 22px;
 }
+.sidenav #develope_department_box{
+    
+    color: #005247;
 
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 22px;
+}
+.sidenav #education_department_box{
+    
+    color: #005247;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 22px;
+}
+.sidenav #marketing_department_box{
+    
+    color: #005247;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 22px;
+}
   /* .sidenav a:hover {
     color: #f1f1f1;
   } */
@@ -124,6 +162,9 @@ header{
     font-size: 16px;
     line-height: 19px;
     margin-left: 100px;
+    border: 0;
+    outline: 0;
+    background: #FEF01B;
 /* identical to box height */
 
     color: #005247;
@@ -179,48 +220,174 @@ header{
 }
 
 
-#day{
-    /* 18일 */
-width: 60px;
-font-family: 'Inter';
-font-style: normal;
-font-weight: 800;
-font-size: 28px;
-padding: 6px 0px 6px 0px;;
 
-color: #005247;
-}
-#todo{
+#add_todo{
 height: 56px;
 }
-#todo_box{
+.todo_box{
     display: flex;
     justify-content: space-between;
     /* padding: 20px; */
     margin: 20px 60px 20px 60px;
     /* justify-content: space-around; */
 }
-#todo_date_content{
+.todo_date_content{
     display: flex;
 
 }
-#todo_content{
-width: 1170px;
-height: 16px;
+.time{
+    width: 120px;
+    height: 16px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 16px;
+    padding: 12px 0px 12px 0px;
+    
+    color: #005247;
+}
+.todo_content{
+    width: 1000px;
+    height: 16px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    
+    padding: 12px 0px 12px 0px;
+    
+    color: #767676;
+    
+    }
+.day{
+    /* 18일 */
+width: 60px;
 
 font-family: 'Inter';
 font-style: normal;
-font-weight: 400;
-font-size: 16px;
+font-weight: 800;
+font-size: 28px;
+padding: 6px 0px 6px 0px;
+margin: 20px 60px 20px 60px;
+color: #005247;
+}
 
-padding: 12px 0px 12px 0px;
 
-color: #767676;
+#add_btn{
+    background: #FAF1CB;
+    color: #005247;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 40px;
+    border: 0;
+}
 
+#add_todo_box{
+    display: none;
+
+    justify-content: space-between;
+    margin: 20px 60px 20px 60px;
+}
+
+.edit_delete_btn{
+
+    width: 60px;
+    height: 40px;
+    text-align: center;
+    padding: 0px 0px 24px 0px;
+}
+
+#write_btn{
+    width: 20px;
+    
+    background: #FAF1CB;
+    color: #005247;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 25px;
+    border: 0;
+}
+
+#cancle_btn{
+    width: 30px;
+
+    background: #FAF1CB;
+    color: #005247;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 35px;
+    border: 0;
+
+
+}
+
+#add_todo_date_content{
+    display: flex;
+
+}
+#add_todo_content{
+    width: 1170px;
+    height: 40px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    
+    padding: 12px 0px 12px 0px;
+    /* border: 0; */
+    outline: 0;
+    color: #767676;
+    background-color: #FAF1CB;
+    border: 0;
+    border-bottom: 2px dotted #005247;
+    }
+
+#date{
+    height: 40px;
+    border: 0;
+    background-color: #FAF1CB;
+}
+#ampm{
+    height: 40px;
+    border: 0;
+    background-color: #FAF1CB;
+}
+#hour{
+    height: 40px;
+    border: 0;
+    background-color: #FAF1CB;
+}
+#minute{
+    height: 40px;
+    border: 0;
+    background-color: #FAF1CB;
 }
 #edit_delete_btn{
     width: 60px;
-    /* height: 40px; */
+    height: 40px;
     text-align: center;
-    padding: 12px 0px 12px 0px;
+    /* padding: 12px 0px 12px 0px; */
+}
+
+@media screen and (max-width:1600px) {
+    #add_todo_date_content{
+        width: 90%;
+    }
+    #edit_delete_btn{
+        width: 90%;
+    }
+}
+@media screen and (max-width:700px) {
+    #add_todo_date_content{
+        width: 70%;
+    }
+    #edit_delete_btn{
+        width: 70%;
+    }
 }
