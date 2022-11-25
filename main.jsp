@@ -6,16 +6,27 @@
 <%@ page import="java.util.ArrayList"%>
 
 <% 
+// 1119 파라미터 받는 것을 먼저 써야 한다. 
+// 
+// 커넥터를 불러오는 명령어 줄
+Class.forName("com.mysql.jdbc.Driver");  
 
-String month =request.getParameter("month");
+// DB 주소, 계정 아이디, 비밀번호 적어주기 mysql포트는 3306 : DB 연결 작업
+Connection connect=DriverManager.getConnection("jdbc:mysql://localhost:3306/Calendarium", "se" , "1234" );
 
-if (month == null || month.equals("")){
-    month = "9";
+String month_value = request.getParameter("month");
+if(month_value==null || month_value.equals("")){
+    month_value = "2022-11";
 }
-else{
+String[] split_month_value = month_value.split("-");
+String year_info = split_month_value[0];
+String month_info = split_month_value[1];
 
-}
-
+// 로그인 정보가 없을 때, 들어왔다면 돌려준다.
+// 세션 유무 확인하는 코드가 있어야 함
+// 세션을 안 썼을 때, reload 시 날라간다 (유지할 방법 x), login 정보를 계속 옮겨줘야하는데 이를 세션으로 해결할 수 있다.
+// DB 통신은 속도가 느려진다. --> 그래서 다 가져온다,,,,,
+// 세션은 RAM위에서 진행된다 --> 속도는 빠르지만, 비용이 비싸 다 올릴 수는 없다~
 String user_id = (String)session.getAttribute("idValue");
 String user_name = (String)session.getAttribute("nameValue");
 String user_department = (String)session.getAttribute("departmentValue");
@@ -44,69 +55,62 @@ else if (user_rank.equals("1")){
     user_rank = "팀원";
 }
 
-    // 커넥터를 불러오는 명령어 줄
-    Class.forName("com.mysql.jdbc.Driver");  
 
-    // DB 주소, 계정 아이디, 비밀번호 적어주기 mysql포트는 3306 : DB 연결 작업
-    Connection connect=DriverManager.getConnection("jdbc:mysql://localhost:3306/Calendarium", "se" , "1234" );
+String string_month_value_start = year_info+"-"+month_info+"-01 00:00:00";
+String string_month_value_finish = year_info+"-"+month_info+"-31 23:59:59";
 
-    String sql2="SELECT userName FROM user WHERE userDepartment = 1" ; 
-    PreparedStatement query2 =connect.prepareStatement(sql2); 
-    String sql3="SELECT userName FROM user WHERE userDepartment = 2" ; 
-    PreparedStatement query3 =connect.prepareStatement(sql3); 
-    String sql4="SELECT userName FROM user WHERE userDepartment = 3" ; 
-    PreparedStatement query4 =connect.prepareStatement(sql4); 
-    String sql5="SELECT userName FROM user WHERE userDepartment = 4" ; 
-    PreparedStatement query5 =connect.prepareStatement(sql5); 
+String sql0= "SELECT * FROM Todo WHERE TodoDate BETWEEN ? AND ?";
+
+PreparedStatement query0 =connect.prepareStatement(sql0); 
+query0.setString(1, string_month_value_start);
+query0.setString(2, string_month_value_finish);
+ResultSet result0 = query0.executeQuery();
 
 
-    String userID="" ; 
-    String userTodo="" ; 
-    String TodoDate="" ; 
+String sql2="SELECT userName FROM user WHERE userDepartment = 1" ; 
+PreparedStatement query2 =connect.prepareStatement(sql2); 
+String sql3="SELECT userName FROM user WHERE userDepartment = 2" ; 
+PreparedStatement query3 =connect.prepareStatement(sql3); 
+String sql4="SELECT userName FROM user WHERE userDepartment = 3" ; 
+PreparedStatement query4 =connect.prepareStatement(sql4); 
+String sql5="SELECT userName FROM user WHERE userDepartment = 4" ; 
+PreparedStatement query5 =connect.prepareStatement(sql5); 
 
-    
-    String sql6="SELECT * FROM Todo WHERE userID= ?" ; 
-    PreparedStatement query6 =connect.prepareStatement(sql6); 
-    query6.setString(1, user_id);
-    ResultSet result6 = query6.executeQuery();
+String userID="" ; 
+String userTodo="" ; 
+String TodoDate="" ; 
 
-    String[] TodoDateArr = TodoDate.split(" ");
-    String TodoDateArr2 = TodoDateArr[0];
-    String[] TodoDateArr3 = TodoDateArr2.split("-");
+ResultSet result2 = query2.executeQuery(); 
+ResultSet result3 = query3.executeQuery();  
+ResultSet result4 = query4.executeQuery();
+ResultSet result5 = query5.executeQuery();
 
-    ResultSet result2 = query2.executeQuery(); 
-    ResultSet result3 = query3.executeQuery();  
-    ResultSet result4 = query4.executeQuery();
-    ResultSet result5 = query5.executeQuery();
+ArrayList<String> Todo = new ArrayList<String>();
+    // JSP에서 fronted로 변수로 넘겨 줄 땐 자료형이 무시된 채 문자 자체가 넘어간다.  
+    while(result0.next()){
+        Todo.add( "[" + "'" + result0.getString(1) + "'" + "," + "'" + result0.getString(2)+ "'" + "," + "'"+ result0.getString(3)+"'" +"," +"'" + result0.getString(4)+"'" +"]");
 
-    ArrayList<String> Todo = new ArrayList<String>(); 
-        while(result6.next()){
-            Todo.add( "[" +"'" + result6.getString(1) + "'" + "," + "'"+ result6.getString(2)+ "'" + "," + "'"+ result6.getString(3)+"'" +"," +"'" + result6.getString(4)+"'" +"]");
-        }
+    }
 
-    ArrayList<String> master = new ArrayList<String>(); 
+ArrayList<String> master = new ArrayList<String>(); 
+    while (result2.next()) 
+    { master.add(result2.getString(1));
+    } 
 
-        while (result2.next()) 
-        { master.add(result2.getString(1));
-        } 
+ArrayList<String> develope = new ArrayList<String>(); 
+    while (result3.next()) 
+    { develope.add(result3.getString(1));
+    } 
 
-    ArrayList<String> develope = new ArrayList<String>(); 
+ArrayList<String> education = new ArrayList<String>(); 
+    while (result4.next()) 
+    { education.add(result4.getString(1));
+    } 
 
-        while (result3.next()) 
-        { develope.add(result3.getString(1));
-        } 
-
-    ArrayList<String> education = new ArrayList<String>(); 
-
-        while (result4.next()) 
-        { education.add(result4.getString(1));
-        } 
-
-    ArrayList<String> marketing = new ArrayList<String>(); 
-
-        while (result5.next()) 
-        { marketing.add(result5.getString(1));
-        } 
+ArrayList<String> marketing = new ArrayList<String>(); 
+    while (result5.next()) 
+    { marketing.add(result5.getString(1));
+    } 
     
 %>
 <head>
@@ -125,7 +129,8 @@ else if (user_rank.equals("1")){
             </a>
             <div id="profile">
                 <%= user_department %> <%= user_name %> <%= user_rank %>
-                <%=month %> 
+                <%= month_value%> 
+
             </div>
            
         </div>
@@ -153,7 +158,10 @@ else if (user_rank.equals("1")){
       
   <div id="calendar">
     <div class="calendar_box">
-        <div id="calendar_year_month"></div>
+        <div name="month_value" id="calendar_year_month" >
+            <%= year_info %> 년 <%= month_info %> 월
+            <!-- <input type="hidden" name="month_value"  id="hidden_calendar_year_month"> -->
+        </div>
         <form class="year_month_change" action="main.jsp">
             <button name="pre_month" type="button" class="year_month_change_btn" onclick="prevMonth()" >&lt;</button>
             <button name="now_month" type="button" class="year_month_change_btn" onclick="goToday()" >Today</button>
@@ -209,7 +217,7 @@ else if (user_rank.equals("1")){
     <div class="alltodo"></div>
 
     
-        <div class="alltodo">
+        <!-- <div class="alltodo">
         <div class="day">26일</div>
     <div class="todo_box">
 
@@ -226,7 +234,7 @@ else if (user_rank.equals("1")){
             </button>
         </div>
     </div> 
-</div>
+</div> -->
 
 </body>
 <script>
@@ -250,7 +258,6 @@ else if (user_rank.equals("1")){
         var minute = document.getElementById("minute").value;
 
         var form = document.getElementsByTagName("form")[0];
-
 
         console.log(date);
         console.log(slice_date[2]);
@@ -285,76 +292,63 @@ else if (user_rank.equals("1")){
 
         document.getElementById("add_todo_box").submit();
     }
-    var Today = new Date(new Date() * 1 + 3600000 * 9).toISOString().replace("T", " ").replace(/\..*/, ""); 
-    console.log(Today)
 
+    //let date = new Date(new Date() * 1 + 3600000 * 9);
+    //var curDate = date.toISOString().replace("T", " ").replace(/\..*/, "").split("-");
+    //console.log("curMonth   입니다", curDate)
 
-
-
-    let date = new Date();
-    const renderCalendar = () => {
-    const viewYear = date.getFullYear();
-    const viewMonth = date.getMonth() + 1; 
-    console.log(viewMonth,viewYear)
-    // year-month 채우기
-    document.getElementById("calendar_year_month").innerHTML = viewYear+"년 "+viewMonth+"월";
-    // 지난 달 마지막 Date, 이번 달 마지막 Date
-    const prevLast = new Date(viewYear, viewMonth, 0);
-    const thisLast = new Date(viewYear, viewMonth + 1, 0);
-    
-    const PLDate = prevLast.getDate();
-    const PLDay = prevLast.getDay();
-    
-    const TLDate = thisLast.getDate();
-    const TLDay = thisLast.getDay();
-    
-    // Dates 기본 배열들
-    const prevDates = [];
-    //const thisDates = [...Array(TLDate + 1).keys()].slice(1);
-    const nextDates = [];
-        // prevDates 계산
-        if (PLDay !== 6) {
-          for (let i = 0; i < PLDay + 1; i++) {
-            prevDates.unshift(PLDate - i);
-          }
+    function prevMonth(){
+        var preMonth = parseInt(<%= month_info %>) - 1
+        var curYear = parseInt(<%= year_info %>)
+        if (preMonth==0){
+            preMonth = 12
+            curYear -= 1 
+            console.log("int_curDate 입니다", curYear)
         }
-      
-         for (let i = 1; i < 7 - TLDay; i++) {
-          nextDates.push(i)
-        }
-      }
-      
-      renderCalendar();
+        document.getElementById("calendar_year_month").innerHTML = curYear+ "년"+ preMonth + "월"
 
-    const prevMonth = () => {
-    date.setMonth(date.getMonth() - 1);
-    renderCalendar();
+        var tmpInput = document.createElement('input');
+        tmpInput.type = "hidden";
+        tmpInput.value = curYear +"-"+ preMonth;
+        tmpInput.name = "month";
 
-    var tmpInput = document.createElement('input');
-    tmpInput.type = "hidden";
-    tmpInput.value = date.getMonth() + 1 ;
-    tmpInput.name = "month";
-    document.getElementsByClassName("year_month_change")[0].appendChild(tmpInput);
-    document.getElementsByClassName("year_month_change")[0].submit();
-
+        document.getElementsByClassName("year_month_change")[0].appendChild(tmpInput);
+        document.getElementsByClassName("year_month_change")[0].submit();
     }
 
-    const nextMonth = () => {
-    date.setMonth(date.getMonth() + 1);
-    renderCalendar();
+    function goToday(){
+        let date = new Date();
+        var nowDate = date.toISOString().replace("T", " ").replace(/\..*/, "").split("-");
+        document.getElementById("calendar_year_month").innerHTML = nowDate[0] +"년 " +nowDate[1] + "월"       
 
-    var tmpInput = document.createElement('input');
-    tmpInput.type = "hidden";
-    tmpInput.value = date.getMonth() + 1 ;
-    tmpInput.name = "month";
-    document.getElementsByClassName("year_month_change")[0].appendChild(tmpInput);
-    document.getElementsByClassName("year_month_change")[0].submit();
+        var tmpInput = document.createElement('input');
+        tmpInput.type = "hidden";
+        tmpInput.value = nowDate[0]+"-"+nowDate[1]
+        tmpInput.name = "month";
+
+        document.getElementsByClassName("year_month_change")[0].appendChild(tmpInput);
+        document.getElementsByClassName("year_month_change")[0].submit();
+
     }
+    
+    function nextMonth(){
+        var nextMonth = parseInt(<%= month_info %>) + 1
+        var int_curDate = parseInt(curDate[0])
 
-    const goToday = () => {
-    date = new Date();
-    renderCalendar();
-    document.getElementsByClassName("year_month_change").submit();
+        if (nextMonth==13){
+            nextMonth = 1
+            int_curDate = parseInt(curDate[0])+1 
+            console.log("int_curDate   입니다", int_curDate)
+        }
+        document.getElementById("calendar_year_month").innerHTML = int_curDate+ "년"+ nextMonth + "월"
+
+        var tmpInput = document.createElement('input');
+        tmpInput.type = "hidden";
+        tmpInput.value = int_curDate +"-"+ nextMonth;
+        tmpInput.name = "month";
+
+        document.getElementsByClassName("year_month_change")[0].appendChild(tmpInput);
+        document.getElementsByClassName("year_month_change")[0].submit();
     }
 
     function openNav() {
@@ -364,9 +358,9 @@ else if (user_rank.equals("1")){
         }
         
     function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("add_todo").style.padding = "0px 0px 0px 0px";
-    document.getElementById("calendar").style.padding = "0px 0px 0px 0px";
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("add_todo").style.padding = "0px 0px 0px 0px";
+        document.getElementById("calendar").style.padding = "0px 0px 0px 0px";
     }
    
 
@@ -376,6 +370,25 @@ else if (user_rank.equals("1")){
         document.getElementById("develope_department").appendChild(tmpBtn);
         console.log("<%=develope.get(i)%>")
         tmpBtn.innerHTML ="<%=develope.get(i)%>";
+        
+
+        var tmpInput = document.createElement("input")
+        // tmpInput.type = "hidden";
+        tmpInput.name = "supervise";
+        tmpInput.value = "<%=develope.get(i)%>";
+        document.getElementById("develope_department").appendChild(tmpInput);
+
+        /*
+        document.getElementsByClassName("team")[i].submit();
+        */
+
+        /*
+        console.log("<%=develope.get(i)%>")
+        tmpBtn.innerHTML ="<%=develope.get(i)%>";
+        tmpInput.value = document.getElementById("team").innerHTML;
+        document.getElementsByClassName("develope_department")[0].submit();
+        */
+        
     <%}%>
     
     <% for (int i = 0; i < education.size(); i++){ %>
@@ -395,8 +408,9 @@ else if (user_rank.equals("1")){
     <%}%>
 
 
+   
 
-    var Todo = <%=Todo%>
+    var Todo = <%= Todo %>
     console.log(Todo)
 
     const tmpTodoDate = []
