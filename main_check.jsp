@@ -10,6 +10,7 @@
     request.setCharacterEncoding("utf-8");
 
     String user_id = (String)session.getAttribute("idValue");
+    
     // 이전 페이지로부터 값 받아오는 부분
     String contentValue=request.getParameter("content"); 
     String dateValue=request.getParameter("date"); 

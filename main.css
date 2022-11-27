@@ -260,6 +260,22 @@ height: 56px;
     
     color: #767676;
     
+    
+    }
+.todo_content_line{
+    width: 1000px;
+    height: 16px;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    
+    padding: 12px 0px 12px 0px;
+    
+    color: #767676;
+    text-decoration: line-through;
+    
     }
 .day{
     /* 18일 */
@@ -299,7 +315,13 @@ color: #005247;
     text-align: center;
     padding: 0px 0px 24px 0px;
 }
+.edit_delete_btns{
 
+    width: 60px;
+    height: 40px;
+    text-align: center;
+    padding: 0px 0px 24px 0px;
+}
 #write_btn{
     width: 20px;
     
@@ -374,7 +396,17 @@ color: #005247;
     text-align: center;
     /* padding: 12px 0px 12px 0px; */
 }
+#logout{
+    
+    color: #005247;
 
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 22px;
+
+    background-color: #FEF01B;
+}
 @media screen and (max-width:1600px) {
     #add_todo_date_content{
         width: 90%;
