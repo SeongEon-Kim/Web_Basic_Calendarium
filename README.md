@@ -1,31 +1,67 @@
-안녕하세요.
+# :pushpin: Caledarium
+>IT 회사에서 사용하는 개인 일정 기록 웹페이지
+>http://15.164.213.146:8080/Calendarium/
 
-스테이지어스 모의외주 프로젝트 입니다.
+</br>
 
-# Calendarium Project
+## 1. 제작 기간 & 참여 인원
+- 2022년 9월 2일 ~ 11월 26일
+- 개인 프로젝트
 
-## 프로젝트 목표
+</br>
 
-**인정받는 개발자**가 되기 위한 *첫 걸음*
+## 2. 사용 기술
+#### `Front-end`
+  - HTML & CSS
+  - JavaScript
+#### `Back-end`
+  - JSP
+  - MySQL 
 
-~~다 할 수 있겠지?~~
 
 
-![이미지 없습니다.](https://blog.kakaocdn.net/dn/bSC1F2/btqKwQF1fX6/KpWl8bFYn5HmzlLVRJhFk1/img.jpg)
+</br>
 
+## 3. ERD 설계
+![](https://ibb.co/jM4ZKNY)
 
+## 4. 디자인
+메인 컬러는 노란색, 페이스북 스타일
+![](https://ibb.co/pXfB1hs)
 
-```
-일반적인 텍스트로 취급됨
-코드 블럭 만들어 줌
-```
+## 5. 핵심 기능
+이 서비스의 핵심 기능은 관리자는 모든 직원의 일정을 체크 가능하고, 상사 같은 부서인 부하직원의 일정을 채크 가능하다는 점입니다.
 
-```html
-<h1 id="title">제목입니다</h1>
-```
+<details>
+<summary><b>핵심 기능 설명 펼치기</b></summary>
+<div markdown="1">
 
-|번호|이름|아이디|연락처|
-|---|---|---|---|
-[1|성언|SeongEon|01030705778]
-[2|성언|SeongEon|01030705778]
-[3|성언|SeongEon|01030705778]
+### 5.1. 회원가입 페이지 (Sign_up.jsp)
+![](https://ibb.co/xsSqDS4)
+
+### 5.2. 로그인 페이지 (login.jsp)
+![](https://ibb.co/xsSqDS4)
+
+### 5.3. 아이디 찾기 페이지 (find_id.jsp)
+![](https://ibb.co/xsSqDS4)
+
+### 5.4. 비밀번호 찾기 페이지 (find_pw.jsp)
+![](https://ibb.co/xsSqDS4)
+
+### 5.5. 메인 페이지 (main.jsp)
+![](https://ibb.co/xsSqDS4)
+
+</div>
+</details>
+
+</br>
+
+## 6. 핵심 트러블 슈팅
+### 6.1. 컨텐츠 필터와 페이징 처리 문제
+- 저는 이 서비스가 페이스북이나 인스타그램 처럼 가볍게, 자주 사용되길 바라는 마음으로 개발했습니다.  
+때문에 페이징 처리도 무한 스크롤을 적용했습니다.
+
+</br>
+
+## 6. 회고 / 느낀점
+>Calendarium 개발 회고 글: https
