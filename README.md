@@ -23,7 +23,7 @@
 </br>
 
 ## 3. ERD 설계
-![](https://ibb.co/jM4ZKNY)
+<img width="774" alt="ERD 설계" src="https://user-images.githubusercontent.com/83195614/222144701-c21df960-c8a7-4fbf-b392-da59cdc0a4a6.png">
 
 ## 4. 디자인
 메인 컬러는 노란색, 페이스북 스타일
